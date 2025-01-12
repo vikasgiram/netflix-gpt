@@ -7,14 +7,13 @@ const Header = () => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log(user);
 
   const handleLogout =() =>{
     dispatch(removeUser());
     navigate('/');
   }
   return (
-    <div className="absolute bg-gradient-to-b from-black w-full z-10 flex justify-between">
+    <div className="absolute bg-gradient-to-b from-black w-full z-50 flex justify-between">
       <img
         className="size-24 w-auto mx-40 my-4"
         src={LOGO_URL}
