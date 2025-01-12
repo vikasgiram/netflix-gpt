@@ -1,19 +1,48 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Header from "./Header";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser} from '../utils/userSlice';
 
 import { validator } from "../utils/validator";
+import { useNavigate } from "react-router-dom";
+import { USER_AVTAR } from "../utils/constants";
+
 const Login = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [erroMsg, setErroMsg] = useState(null);
+  const navigate = useNavigate();
 
   const email = useRef(null);
   const password = useRef(null);
   const name = useRef(null);
+  const dispatch = useDispatch(addUser);
 
+  const user = useSelector((state)=> state.user);
+
+  useEffect(() =>{
+    if(user){
+      navigate('/browse');
+    }
+  })
+  
 
   const handleSubmit = () => {
     const msg = validator(email.current.value, password.current.value, name?.current?.value);
     setErroMsg(msg);
+
+    if(msg) return;
+
+    if(isSignUp){
+      // Sing up logic
+      const profileUrl=USER_AVTAR;
+      dispatch(addUser({name: name.current.value, email: email.current.value, password: password.current.value,profileUrl }));
+      navigate('/browse');
+    }
+    else{
+      // Sign In logic
+      console.log("Sign In");
+    }
+
   };
 
   const HandleSignUpClick = () => {
@@ -69,7 +98,7 @@ const Login = () => {
           {isSignUp ? (
             isSignUp && (
               <p>
-                Allredy Registered?{" "}
+                Allredy Registered?
                 <span
                   className="font-bold cursor-pointer"
                   onClick={HandleSignUpClick}
