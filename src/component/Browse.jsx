@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import Header from "./Header";
 import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 import TrailerContainer from "./TrailerContainer";
-import CardRow from "./CardRow";
+import SecondaryContainer from "./SecondaryContainer";
 
 const Browse=()=>{
     useNowPlayingMovies();
@@ -13,7 +13,7 @@ const Browse=()=>{
         <div>
             <Header/>
             <TrailerContainer movie={mainMovie}/>
-            <CardRow/>
+            <SecondaryContainer/>
             {/** 
              * Main container 
              *  - video title
