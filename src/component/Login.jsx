@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import Header from "./Header";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser} from '../utils/userSlice';
+import { addUser} from '../store/userSlice';
 
 import { validator } from "../utils/validator";
 import { useNavigate } from "react-router-dom";
-import { USER_AVTAR } from "../utils/constants";
+import { BG_URL, USER_AVTAR } from "../utils/constants";
 
 const Login = () => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -123,7 +123,7 @@ const Login = () => {
       <div>
         <img
           className="absolute inset-0 w-full h-full object-cover filter brightness-50"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/154a9550-ce07-4e28-819c-63185dd849f8/web/IN-en-20250106-TRIFECTA-perspective_27b02e7c-f668-4639-9e82-1a5485084b2a_large.jpg"
+          src={BG_URL}
           alt="background"
         />
       </div>

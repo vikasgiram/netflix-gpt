@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { API_OPTIONS } from "../utils/constants";
-import { setTrailer } from "../utils/moviesSlice";
+import { setTrailer } from "../store/moviesSlice";
 import { useEffect } from "react";
 
 

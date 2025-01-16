@@ -6,7 +6,10 @@ const user= localStorage.getItem('user')
 const userSlice = createSlice({
     
     name : "user",
-    initialState: user,
+    initialState: {
+        user: user,
+        searchPage: false,
+    },
     reducers:{
         addUser(state, action){
             localStorage.setItem('user', JSON.stringify(action.payload));
@@ -15,10 +18,13 @@ const userSlice = createSlice({
         removeUser(state, action){
             localStorage.removeItem('user');
             return null;
+        },
+        setSearchPage(state){
+            state.searchPage = !state.searchPage;
         }
     }
 });
 
-export const {addUser,removeUser}= userSlice.actions;
+export const {addUser,removeUser, setSearchPage}= userSlice.actions;
 
 export default userSlice.reducer;
