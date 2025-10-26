@@ -29,6 +29,8 @@ const Search = () => {
       </div>
       <div className="text-white m-10 ">
         <MovieList title={"Search Results ("+ searchResults.length+ ")"} movies={searchResults} />
+
+        
       </div>
     </div>
   );
