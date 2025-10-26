@@ -16,7 +16,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y jq
 
       - name: Make script executable
-        run: chmod +x .github/scripts/check-commit-msg.sh
+        run: chmod +x scripts/check-commit-msg.sh
 
       - name: Run commit message validation
         env:
