@@ -1,0 +1,26 @@
+name: Commit message validation
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Make script executable
+        run: chmod +x .github/scripts/check-commit-msg.sh
+
+      - name: Run commit message validation
+        env:
+          GITHUB_EVENT_PATH: ${{ github.event_path }}
+          GITHUB_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          GITHUB_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: .github/scripts/check-commit-msg.sh
