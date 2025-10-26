@@ -23,4 +23,4 @@ jobs:
           GITHUB_EVENT_PATH: ${{ github.event_path }}
           GITHUB_BASE_SHA: ${{ github.event.pull_request.base.sha }}
           GITHUB_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-        run: ./.github/scripts/check-commit-msg.sh
+        run: ./scripts/check-commit-msg.sh
